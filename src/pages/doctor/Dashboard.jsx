@@ -20,7 +20,7 @@ const DoctorDashboard = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
-  // ✅ Fetch assigned patients
+  //Fetch assigned patients
   const fetchAssignedPatients = async () => {
     try {
       if (!user?.id) return;
@@ -38,7 +38,7 @@ const DoctorDashboard = () => {
     fetchAssignedPatients();
   }, [user]);
 
-  // ✅ Dashboard Cards
+  //Dashboard Cards
   const cards = [
     {
       title: "Assigned Patients",
@@ -48,7 +48,7 @@ const DoctorDashboard = () => {
     },
   ];
 
-  // ✅ Handle card click
+  //Handle card click
   const handleCardClick = (path) => navigate(path);
 
   return (

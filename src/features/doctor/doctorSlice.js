@@ -1,4 +1,3 @@
-// src/features/doctor/doctorSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 import {
   fetchDoctorPatients,

@@ -7,9 +7,9 @@ import {
   PATIENT_REGISTER
 } from '../../apis/endpoints';
 
-// ====================== LOGIN THUNKS ======================
+//LOGIN THUNKS
 
-// 🔹 Admin login
+//Admin login
 export const adminLogin = createAsyncThunk(
   'auth/adminLogin',
   async ({ username, password }, { rejectWithValue }) => {
@@ -22,7 +22,7 @@ export const adminLogin = createAsyncThunk(
   }
 );
 
-// 🔹 Doctor login
+//Doctor login
 export const doctorLogin = createAsyncThunk(
   'auth/doctorLogin',
   async ({ username, password }, { rejectWithValue }) => {
@@ -35,7 +35,7 @@ export const doctorLogin = createAsyncThunk(
   }
 );
 
-// 🔹 Patient login
+//Patient login
 export const patientLogin = createAsyncThunk(
   'auth/patientLogin',
   async ({ username, password }, { rejectWithValue }) => {
@@ -48,7 +48,7 @@ export const patientLogin = createAsyncThunk(
   }
 );
 
-// ====================== PATIENT REGISTER THUNK ======================
+//PATIENT REGISTER THUNK
 export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (data, { rejectWithValue }) => {

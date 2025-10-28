@@ -21,9 +21,9 @@ import { useSelector } from "react-redux";
 const Patients = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useSelector((state) => state.auth); // Logged-in doctor
+  const { user } = useSelector((state) => state.auth); //Logged-in doctor
 
-  // ✅ Fetch assigned patients for the doctor
+  //Fetch assigned patients for the doctor
   const fetchAssignedPatients = async () => {
     try {
       if (!user?.id) return;

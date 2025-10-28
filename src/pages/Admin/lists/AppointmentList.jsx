@@ -20,7 +20,7 @@ const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch all appointments booked by patients
+  //Fetch all appointments booked by patients
   const fetchAppointments = async () => {
     try {
       const res = await GetRequest("/admin/appointments");

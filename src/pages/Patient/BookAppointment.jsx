@@ -31,7 +31,7 @@ const BookAppointment = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [isError, setIsError] = useState(false);
 
-  // ✅ Fetch doctors when component loads
+  //Fetch doctors when component loads
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
@@ -56,7 +56,7 @@ const BookAppointment = () => {
     fetchDoctors();
   }, []);
 
-  // ✅ Handle input change
+  //Handle input change
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -64,10 +64,10 @@ const BookAppointment = () => {
     });
   };
 
-  // ✅ Close modal
+  //Close modal
   const handleClose = () => setOpenModal(false);
 
-  // ✅ Handle submit (main logic)
+  //Handle submit (main logic)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -79,7 +79,7 @@ const BookAppointment = () => {
     }
 
     try {
-      // ✅ Get logged-in patient data from localStorage
+      //Get logged-in patient data from localStorage
       const storedUser = JSON.parse(localStorage.getItem("user"));
       if (!storedUser || !storedUser.id) {
         setIsError(true);
@@ -88,7 +88,7 @@ const BookAppointment = () => {
         return;
       }
 
-      // ✅ Prepare payload for backend
+      //Prepare payload for backend
       const payload = {
         patient_id: storedUser.id,
         doctor_id: form.doctorId,
@@ -103,7 +103,7 @@ const BookAppointment = () => {
       setIsError(false);
       setModalMessage(response?.message || "Appointment booked successfully!");
 
-      // ✅ Reset form
+      //Reset form
       setForm({
         doctorId: "",
         date: "",
@@ -131,7 +131,6 @@ const BookAppointment = () => {
           Book Appointment
         </Typography>
 
-        {/* ✅ Appointment Form */}
         <Box
           component="form"
           onSubmit={handleSubmit}
@@ -146,7 +145,6 @@ const BookAppointment = () => {
             boxShadow: 2,
           }}
         >
-          {/* Doctor Dropdown */}
           <TextField
             select
             label="Select Doctor"
@@ -167,7 +165,6 @@ const BookAppointment = () => {
             )}
           </TextField>
 
-          {/* Appointment Date */}
           <TextField
             label="Appointment Date"
             name="date"
@@ -178,7 +175,6 @@ const BookAppointment = () => {
             required
           />
 
-          {/* Notes */}
           <TextField
             label="Symptoms / Notes"
             name="notes"
@@ -195,7 +191,6 @@ const BookAppointment = () => {
         </Box>
       </Box>
 
-      {/* ✅ Modal for Success/Error */}
       <Dialog open={openModal} onClose={handleClose}>
         <DialogTitle
           sx={{

@@ -24,7 +24,7 @@ const PatientDashboard = () => {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ✅ Fetch available doctors for the patient
+  //Fetch available doctors for the patient
   const fetchDoctors = async () => {
     try {
       const res = await GetRequest(
@@ -38,7 +38,7 @@ const PatientDashboard = () => {
     }
   };
 
-  // ✅ Fetch patient history using logged-in user ID
+  //Fetch patient history using logged-in user ID
   useEffect(() => {
     if (user?.id) {
       dispatch(fetchPatientHistory(user.id));
@@ -63,7 +63,6 @@ const PatientDashboard = () => {
           Patient Dashboard
         </Typography>
 
-        {/* 🧾 Patient Stats Section */}
         <Grid container spacing={3}>
           <Grid item xs={12} md={4}>
             <Card

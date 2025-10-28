@@ -7,13 +7,13 @@ export const PATIENT_LOGIN = '/patient/login';
 // ADMIN ENDPOINTS
 export const ADMIN_CREATE_DOCTOR = '/admin/doctors';
 export const ADMIN_GET_DOCTORS = '/admin/doctors';
-export const ADMIN_GET_ALL_DOCTORS = '/admin/doctors'; // ✅ Add this line
+export const ADMIN_GET_ALL_DOCTORS = '/admin/doctors'; 
 export const ADMIN_UPDATE_DOCTOR = (id) => `/admin/doctors/${id}`;
 export const ADMIN_DELETE_DOCTOR = (id) => `/admin/doctors/${id}`;
 
 export const ADMIN_CREATE_PATIENT = '/admin/patients';
 export const ADMIN_GET_PATIENTS = '/admin/patients';
-export const ADMIN_GET_ALL_PATIENTS = '/admin/patients'; // ✅ Add this line
+export const ADMIN_GET_ALL_PATIENTS = '/admin/patients'; 
 export const ADMIN_UPDATE_PATIENT = (id) => `/admin/patients/${id}`;
 export const ADMIN_DELETE_PATIENT = (id) => `/admin/patients/${id}`;
 

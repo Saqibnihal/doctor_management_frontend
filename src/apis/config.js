@@ -12,13 +12,13 @@ export const PostRequest = async (url, data) => {
   return res.data;
 };
 
-// PATCH request (for partial updates)
+// PATCH request 
 export const PatchRequest = async (url, data) => {
   const res = await api.patch(url, data);
   return res.data;
 };
 
-// PUT request (for full replacements)
+// PUT request 
 export const PutRequest = async (url, data) => {
   const res = await api.put(url, data);
   return res.data;

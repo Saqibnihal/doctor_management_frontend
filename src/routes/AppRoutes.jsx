@@ -3,11 +3,11 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProtectedRoute from "../components/ProtectedRoute";
 
-// ===== AUTH PAGES =====
+// AUTH PAGES 
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 
-// ===== ADMIN PAGES =====
+//ADMIN PAGES 
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AddDoctor from "../pages/Admin/AddDoctor";
 import AddPatient from "../pages/Admin/AddPatient";
@@ -16,13 +16,13 @@ import DoctorList from "../pages/Admin/lists/DoctorList";
 import PatientList from "../pages/Admin/lists/PatientList";
 import AppointmentList from "../pages/Admin/lists/AppointmentList";
 
-// ===== DOCTOR PAGES =====
+//  DOCTOR PAGES 
 import DoctorDashboard from "../pages/doctor/Dashboard";
 import Appointment from "../pages/doctor/lists/Appointments";
 import Prescription from "../pages/doctor/Prescription";
 import Patients from "../pages/doctor/Patient";
 
-// ===== PATIENT PAGES =====
+// PATIENT PAGES 
 import PatientDashboard from "../pages/Patient/Dashboard";
 import BookAppointment from "../pages/Patient/BookAppointment";
 import History from "../pages/Patient/History";
@@ -30,7 +30,7 @@ import History from "../pages/Patient/History";
 const AppRoutes = () => {
   const { token, user, role } = useSelector((state) => state.auth);
 
-  // Helper: decide landing redirect
+  // Helper decide landing redirect
   const getRedirect = () => {
     if (!token || !user) return "/login";
     switch (role) {
@@ -47,7 +47,7 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      {/* ===== PUBLIC ROUTES ===== */}
+      {/*  PUBLIC ROUTES  */}
       <Route
         path="/"
         element={<Navigate to={getRedirect()} replace />}
@@ -61,7 +61,7 @@ const AppRoutes = () => {
         element={!token ? <Register /> : <Navigate to={getRedirect()} replace />}
       />
 
-      {/* ===== ADMIN ROUTES ===== */}
+      {/*  ADMIN ROUTES  */}
       <Route
         path="/admin/dashboard"
         element={
@@ -119,7 +119,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* ===== DOCTOR ROUTES ===== */}
+      {/*  DOCTOR ROUTES  */}
       <Route
         path="/doctor/dashboard"
         element={
@@ -153,7 +153,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* ===== PATIENT ROUTES ===== */}
+      {/*  PATIENT ROUTES  */}
       <Route
         path="/patient/dashboard"
         element={
@@ -179,7 +179,6 @@ const AppRoutes = () => {
         }
       />
 
-      {/* ===== FALLBACK ROUTE ===== */}
       <Route
         path="*"
         element={

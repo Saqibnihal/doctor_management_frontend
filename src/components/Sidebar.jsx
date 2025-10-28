@@ -5,9 +5,9 @@ import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
   const { user, role } = useSelector((state) => state.auth);
-  const userRole = role || user?.role; // safer fallback
+  const userRole = role || user?.role; 
 
-  // ===== ADMIN LINKS =====
+  //ADMIN LINKS
   const adminLinks = [
     { name: 'Dashboard', path: '/admin/dashboard' },
     { name: 'Add Doctor', path: '/admin/add-doctor' },
@@ -18,7 +18,7 @@ const Sidebar = () => {
     { name: 'Appointments', path: '/admin/appointments' },
   ];
 
-  // ===== DOCTOR LINKS =====
+  // DOCTOR LINKS
   const doctorLinks = [
     { name: 'Dashboard', path: '/doctor/dashboard' },
     { name: 'My Patients', path: '/doctor/patients' },
@@ -26,7 +26,7 @@ const Sidebar = () => {
     { name: 'Appointments', path: '/doctor/appointments' },
   ];
 
-  // ===== PATIENT LINKS =====
+  //PATIENT LINKS
   const patientLinks = [
     { name: 'Dashboard', path: '/patient/dashboard' },
     { name: 'Book Appointment', path: '/patient/book-appointment' },

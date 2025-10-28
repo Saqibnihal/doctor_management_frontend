@@ -52,7 +52,7 @@ const AddPatient = () => {
     try {
       const response = await PostRequest(ADMIN_CREATE_PATIENT, form);
 
-      // ✅ Detect duplicate or existing user
+      //Detect duplicate or existing user
       if (
         response?.message?.toLowerCase().includes('exists') ||
         response?.message?.toLowerCase().includes('duplicate')
@@ -63,7 +63,7 @@ const AddPatient = () => {
         setIsError(false);
         setModalMessage(response.message || 'Patient added successfully!');
 
-        // ✅ Reset form
+        //Reset form
         setForm({
           username: '',
           password: '',
@@ -157,7 +157,6 @@ const AddPatient = () => {
         </Box>
       </Box>
 
-      {/* ✅ Modal for Success/Error */}
       <Dialog open={openModal} onClose={handleClose}>
         <DialogTitle
           sx={{

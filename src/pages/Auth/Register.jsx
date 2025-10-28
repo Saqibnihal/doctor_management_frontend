@@ -50,7 +50,6 @@ const Register = () => {
       </Typography>
 
       <form onSubmit={handleSubmit}>
-        {/* Full Name */}
         <TextField
           label="Full Name"
           fullWidth
@@ -60,7 +59,6 @@ const Register = () => {
           required
         />
 
-        {/* Email */}
         <TextField
           label="Email"
           type="email"
@@ -71,7 +69,6 @@ const Register = () => {
           required
         />
 
-        {/* Phone */}
         <TextField
           label="Phone"
           type="tel"
@@ -81,7 +78,6 @@ const Register = () => {
           onChange={(e) => setForm({ ...form, phone: e.target.value })}
         />
 
-        {/* Age */}
         <TextField
           label="Age"
           type="number"
@@ -91,7 +87,6 @@ const Register = () => {
           onChange={(e) => setForm({ ...form, age: e.target.value })}
         />
 
-        {/* Address */}
         <TextField
           label="Address"
           fullWidth
@@ -102,7 +97,6 @@ const Register = () => {
           onChange={(e) => setForm({ ...form, address: e.target.value })}
         />
 
-        {/* Username */}
         <TextField
           label="Username"
           fullWidth
@@ -112,7 +106,6 @@ const Register = () => {
           required
         />
 
-        {/* Password */}
         <TextField
           label="Password"
           type="password"
@@ -123,7 +116,6 @@ const Register = () => {
           required
         />
 
-        {/* Submit Button */}
         <Button
           type="submit"
           variant="contained"
@@ -135,14 +127,12 @@ const Register = () => {
           {loading ? 'Registering...' : 'Register'}
         </Button>
 
-        {/* Error Message */}
         {error && (
           <Typography color="error" mt={2} textAlign="center">
             {typeof error === 'string' ? error : error.message}
           </Typography>
         )}
 
-        {/* Login Link */}
         <Typography mt={2} textAlign="center">
           Already have an account?{' '}
           <Link to="/login" style={{ textDecoration: 'none', color: '#1976d2' }}>

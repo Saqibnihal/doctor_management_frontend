@@ -33,7 +33,7 @@ const PatientList = () => {
   const [editingPatient, setEditingPatient] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
-  // ✅ Fetch all patients
+  //Fetch all patients
   const fetchPatients = async () => {
     try {
       const res = await GetRequest(ADMIN_GET_PATIENTS);
@@ -49,7 +49,7 @@ const PatientList = () => {
     fetchPatients();
   }, []);
 
-  // ✅ Start editing a patient
+  //Start editing a patient
   const handleEdit = (patient) => {
     setEditingPatient(patient.id);
     setFormData({
@@ -59,12 +59,12 @@ const PatientList = () => {
     });
   };
 
-  // ✅ Handle input change
+  //Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ✅ Save updated data (PATCH)
+  //Save updated data (PATCH)
   const handleSave = async (id) => {
     try {
       await PatchRequest(ADMIN_UPDATE_PATIENT(id), formData);
@@ -75,7 +75,7 @@ const PatientList = () => {
     }
   };
 
-  // ✅ Delete patient (DELETE)
+  //Delete patient (DELETE)
   const handleDelete = async (id) => {
     try {
       await DeleteRequest(ADMIN_DELETE_PATIENT(id));
@@ -207,7 +207,7 @@ const PatientList = () => {
           </TableContainer>
         )}
 
-        {/* ✅ Go Back Button */}
+        
         <Button
           variant="contained"
           color="primary"

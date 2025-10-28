@@ -92,9 +92,9 @@ const AdminDashboard = () => {
                     height: 180, 
                     width:200,
                     display: "flex",
-                    alignItems: "center", // ✅ Vertically center content
-                    justifyContent: "center", // ✅ Horizontally center content
-                    textAlign: "center", // ✅ Center text inside
+                    alignItems: "center", 
+                    justifyContent: "center", 
+                    textAlign: "center", 
                     transition: "all 0.3s ease",
                     "&:hover": {
                       transform: "scale(1.05)",

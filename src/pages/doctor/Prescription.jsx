@@ -18,7 +18,7 @@ import {
   DOCTOR_UPDATE_PATIENT,
 } from "../../apis/endpoints";
 
-// ✅ Reusable Modal Component
+//Reusable Modal Component
 const InfoModal = ({ open, onClose, title, message }) => (
   <Modal
     open={open}
@@ -56,7 +56,7 @@ const Prescription = () => {
   const [successOpen, setSuccessOpen] = useState(false);
   const [noPatientOpen, setNoPatientOpen] = useState(false);
 
-  // ✅ Fetch assigned patients for logged-in doctor
+  //Fetch assigned patients for logged-in doctor
   useEffect(() => {
     const fetchAssignedPatients = async () => {
       try {
@@ -65,10 +65,9 @@ const Prescription = () => {
         const res = await GetRequest(DOCTOR_GET_PATIENTS(user.id));
         console.log("Fetched patients:", res);
 
-        // ✅ Handle API response safely
+        //Handle API response safely
         const allPatients = Array.isArray(res) ? res : [];
 
-        // ✅ Adjust filter logic:
         // Include patients who are assigned to doctor
         // and either have no notes/status OR are pending
         const unupdatedPatients = allPatients.filter(
@@ -82,7 +81,7 @@ const Prescription = () => {
 
         setPatients(unupdatedPatients);
 
-        // ✅ If there are no patients left to prescribe, show modal
+        //If there are no patients left to prescribe, show modal
         if (unupdatedPatients.length === 0) {
           setNoPatientOpen(true);
         }
@@ -96,12 +95,12 @@ const Prescription = () => {
     fetchAssignedPatients();
   }, [user]);
 
-  // ✅ Handle input change
+  //Handle input change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ Handle form submit
+  //Handle form submit
   const handleSubmit = async () => {
     if (!selectedPatient || !form.status || !form.notes) {
       alert("Please fill all fields");
@@ -114,15 +113,15 @@ const Prescription = () => {
         notes: form.notes,
       });
 
-      // ✅ Remove updated patient from dropdown
+      //Remove updated patient from dropdown
       setPatients((prev) => prev.filter((p) => p.id !== selectedPatient));
 
-      // ✅ Show success modal
+      //Show success modal
       setSuccessOpen(true);
       setForm({ status: "", notes: "" });
       setSelectedPatient("");
 
-      // ✅ If that was the last patient, show "no patients left" modal
+      //If that was the last patient, show "no patients left" modal
       if (patients.length === 1) {
         setNoPatientOpen(true);
       }
@@ -150,7 +149,6 @@ const Prescription = () => {
         </Typography>
 
         <Paper sx={{ p: 3, maxWidth: 600 }}>
-          {/* Patient dropdown */}
           <TextField
             select
             fullWidth
@@ -171,7 +169,6 @@ const Prescription = () => {
             )}
           </TextField>
 
-          {/* Status dropdown */}
           <TextField
             select
             fullWidth
@@ -188,7 +185,6 @@ const Prescription = () => {
             <MenuItem value="Cancelled">Cancelled</MenuItem>
           </TextField>
 
-          {/* Notes field */}
           <TextField
             fullWidth
             multiline
@@ -213,7 +209,6 @@ const Prescription = () => {
         </Paper>
       </Box>
 
-      {/* ✅ Success modal */}
       <InfoModal
         open={successOpen}
         onClose={() => setSuccessOpen(false)}
@@ -221,7 +216,6 @@ const Prescription = () => {
         message="Patient updated successfully!"
       />
 
-      {/* 🚫 No patients modal */}
       <InfoModal
         open={noPatientOpen}
         onClose={() => setNoPatientOpen(false)}

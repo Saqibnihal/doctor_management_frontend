@@ -6,7 +6,7 @@ import {
   registerUser,
 } from './authThunks';
 
-// ✅ Parse user safely from localStorage
+//Parse user safely from localStorage
 let parsedUser = null;
 const storedUser = localStorage.getItem('user');
 if (storedUser && storedUser !== 'undefined') {
@@ -38,7 +38,7 @@ const authSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // ================= ADMIN LOGIN =================
+    //ADMIN LOGIN
     builder
       .addCase(adminLogin.pending, (state) => {
         state.loading = true;
@@ -50,7 +50,7 @@ const authSlice = createSlice({
         const token = action.payload.token || 'dummy-admin-token';
         const user = action.payload.admin || action.payload.user || {};
 
-        // ✅ Make sure name field is consistent
+        //Make sure name field is consistent
         const normalizedUser = {
           id: user.id,
           name: user.name || user.fullName || user.username || 'Admin',
@@ -71,7 +71,7 @@ const authSlice = createSlice({
         state.error = action.payload || action.error.message;
       });
 
-    // ================= DOCTOR LOGIN =================
+    //DOCTOR LOGIN 
     builder
       .addCase(doctorLogin.pending, (state) => {
         state.loading = true;
@@ -103,7 +103,7 @@ const authSlice = createSlice({
         state.error = action.payload || action.error.message;
       });
 
-    // ================= PATIENT LOGIN =================
+    //PATIENT LOGIN
     builder
       .addCase(patientLogin.pending, (state) => {
         state.loading = true;
@@ -135,7 +135,7 @@ const authSlice = createSlice({
         state.error = action.payload || action.error.message;
       });
 
-    // ================= REGISTER (PATIENT) =================
+    //REGISTER (PATIENT)
     builder
       .addCase(registerUser.pending, (state) => {
         state.loading = true;

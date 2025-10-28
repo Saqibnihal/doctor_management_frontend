@@ -54,7 +54,7 @@ const AddDoctor = () => {
     try {
       const response = await PostRequest(ADMIN_CREATE_DOCTOR, form);
 
-      // ✅ Friendly duplicate handling
+      //Friendly duplicate handling
       if (
         response?.message?.toLowerCase().includes('exists') ||
         response?.message?.toLowerCase().includes('duplicate')
@@ -81,7 +81,7 @@ const AddDoctor = () => {
     } catch (error) {
       console.error('Error adding doctor:', error);
 
-      // ✅ Handle duplicate error from backend gracefully
+      //Handle duplicate error from backend gracefully
       const backendMsg = error?.response?.data?.message?.toLowerCase() || '';
 
       if (backendMsg.includes('exists') || backendMsg.includes('duplicate')) {
@@ -176,7 +176,6 @@ const AddDoctor = () => {
         </Box>
       </Box>
 
-      {/* ✅ Success / Error Modal */}
       <Dialog open={openModal} onClose={handleClose}>
         <DialogTitle
           sx={{

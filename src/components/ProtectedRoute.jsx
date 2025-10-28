@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children, role }) => {
   const [isReady, setIsReady] = useState(false);
   const location = useLocation();
 
-  // Small delay to wait for Redux rehydration
+  // Small delay 
   useEffect(() => {
     const timer = setTimeout(() => setIsReady(true), 200);
     return () => clearTimeout(timer);
@@ -15,12 +15,12 @@ const ProtectedRoute = ({ children, role }) => {
 
   if (!isReady) return null;
 
-  // No user or token → redirect to login
+  // No user or token means redirect to login
   if (!token || !user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  // Role mismatch → redirect to their own dashboard
+  // Role mismatch means redirect to their own dashboard
   if (role && userRole !== role) {
     switch (userRole) {
       case 'admin':
@@ -34,7 +34,7 @@ const ProtectedRoute = ({ children, role }) => {
     }
   }
 
-  // If everything matches → allow access
+  // If everything matches means allow access
   return children;
 };
 

@@ -34,7 +34,7 @@ const AssignPatientToDoctor = () => {
   const [modalMessage, setModalMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
 
-  // ✅ Fetch doctors and patients
+  //Fetch doctors and patients
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -46,14 +46,14 @@ const AssignPatientToDoctor = () => {
         const rawDoctors = doctorsRes?.doctors || doctorsRes || [];
         const rawPatients = patientsRes?.patients || patientsRes || [];
 
-        // ✅ Separate assigned & unassigned patients
+        //Separate assigned & unassigned patients
         const unassignedPatients = rawPatients.filter((p) => !p.doctor_id);
         const assignedPatients = rawPatients.filter((p) => p.doctor_id);
 
         setDoctors(rawDoctors);
         setPatients(unassignedPatients);
 
-        // ✅ Build assigned pairs table
+        //Build assigned pairs table
         const pairs = assignedPatients.map((patient) => {
           const doctor = rawDoctors.find((d) => d.id === patient.doctor_id);
           return {
@@ -75,7 +75,7 @@ const AssignPatientToDoctor = () => {
     fetchData();
   }, []);
 
-  // ✅ Handle Assign
+  //Handle Assign
   const handleAssign = async (e) => {
     e.preventDefault();
 
@@ -96,7 +96,7 @@ const AssignPatientToDoctor = () => {
       setModalMessage(response.message || "Patient assigned successfully!");
       setIsSuccess(true);
 
-      // ✅ Update assigned pairs
+      //Update assigned pairs
       const assignedPatient = patients.find((p) => p.id === selectedPatient);
       const assignedDoctor = doctors.find((d) => d.id === selectedDoctor);
 
@@ -110,11 +110,11 @@ const AssignPatientToDoctor = () => {
         },
       ]);
 
-      // ✅ Remove from dropdowns
+      //Remove from dropdowns
       setPatients((prev) => prev.filter((p) => p.id !== selectedPatient));
       setDoctors((prev) => prev.filter((d) => d.id !== selectedDoctor));
 
-      // ✅ Reset selections
+      //Reset selections
       setSelectedDoctor("");
       setSelectedPatient("");
     } catch (error) {
@@ -142,7 +142,6 @@ const AssignPatientToDoctor = () => {
           alignItems: "center",
         }}
       >
-        {/* ===== Form Section ===== */}
         <Box
           component={Paper}
           sx={{
@@ -162,7 +161,6 @@ const AssignPatientToDoctor = () => {
           </Typography>
 
           <form onSubmit={handleAssign}>
-            {/* Patient Dropdown */}
             <TextField
               select
               fullWidth
@@ -182,7 +180,6 @@ const AssignPatientToDoctor = () => {
               )}
             </TextField>
 
-            {/* Doctor Dropdown */}
             <TextField
               select
               fullWidth
@@ -218,7 +215,6 @@ const AssignPatientToDoctor = () => {
           </form>
         </Box>
 
-        {/* ===== Assigned Pairs Table ===== */}
         <Box sx={{ width: "80%", mt: 2 }}>
           <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
             Assigned Patients to Doctors
@@ -253,7 +249,6 @@ const AssignPatientToDoctor = () => {
         </Box>
       </Box>
 
-      {/* ✅ Modal */}
       <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
         <Box
           sx={{
